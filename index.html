@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitácora de Laboratorio 2026 — Maximiliano Lavetti</title>
+    <meta name="description" content="Portafolio técnico de hardware, presupuestos y mantenimiento de PC. Proyecto de 5to año.">
+    <meta name="keywords" content="hardware, armado de pc, intel, asus, mantenimiento, arduino, informática">
+    <meta name="author" content="Maximiliano Lavetti">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div id="cursor-follower"></div>
+    <button id="btn-tema" class="interruptor-tema" title="Cambiar tema">☽</button>
+
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#componentes">Hardware</a></li>
+            <li><a href="#memoria">Memoria</a></li>
+            <li><a href="#gpu-section">GPU</a></li>
+            <li><a href="#psu-section">PSU & Gabinete</a></li>
+            <li><a href="#perifericos">Periféricos</a></li>
+            <li><a href="#presupuestos">Presupuestos</a></li>
+            <li><a href="#mantenimiento">Mantenimiento</a></li>
+            <li><a href="#arduino">Arduino e IoT</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- INICIO -->
+        <section id="inicio">
+            <h1>Bitácora de Laboratorio 2026</h1>
+            <p>Maximiliano Lavetti — Alumno — 5to Año</p>
+            <svg width="100" height="100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+            </svg>
+        </section>
+
+        <!-- COMPONENTES INTERNOS -->
+        <section id="componentes">
+            <h2>Arquitectura y Componentes (PC Lavetti)</h2>
+            <div class="grupo-botones">
+                <a href="https://docs.google.com/document/d/1mydwgN9bjniIpk8EyRv3KoaLeVaVSeCTFqpFDBlqhL4/edit?usp=sharing" target="_blank" class="boton-accion">Ver Ficha Técnica Completa</a>
+                <a href="https://docs.google.com/document/d/1c2anMqCko8HGNlQKXpGaa7OuPeHzG8dC4x0rHysYOTQ/edit?usp=sharing" target="_blank" class="boton-accion">Ver Ficha Técnica TP 3</a>
+                <a href="https://docs.google.com/document/d/1ALN3Y8OeICHNXosC5K8zu9gdriw6n1AN-nh9ChU72iw/edit?usp=sharing" target="_blank" class="boton-accion">Ver Ficha Técnica TP 4</a>
+            </div>
+            <div class="galeria-grid">
+                <div class="tarjeta">
+                    <img src="images/madre.jpg" alt="Placa Madre MSI B550M">
+                    <h3>Placa Madre</h3>
+                    <p>Modelo: MSI B550M PRO-VDH WIFI</p>
+                    <button id="btn-diagnostico" class="boton-accion">Ver Layout del Manual</button>
+                </div>
+                <div class="tarjeta">
+                    <img src="images/procesador.jpg" alt="Procesador AMD Ryzen 5 5600">
+                    <h3>Microprocesador</h3>
+                    <p>Modelo: AMD Ryzen 5 5600</p>
+                    <p>Arquitectura: 64 bits, x64</p>
+                </div>
+                <div class="tarjeta">
+                    <img src="images/ram 16.jpg" alt="Memoria RAM">
+                    <h3>Memoria RAM</h3>
+                    <p>Corsair Vengeance LPX 16GB</p>
+                    <a href="https://docs.google.com/document/d/1iBr_C53eDOQ4E-mRaSwbiN0lhdJy670shvgOXKSPQ-k/edit?usp=sharing" target="_blank" class="boton-accion">📖 Informe Técnico RAM</a>
+                </div>
+                <div class="tarjeta">
+                    <img src="images/gpu.jpg" alt="Tarjeta Gráfica RTX 4060">
+                    <h3>Tarjeta Gráfica (GPU)</h3>
+                    <p>Modelo: NVIDIA GeForce RTX 4060</p>
+                    <button class="boton-accion btn-abrir-informe" data-modal="modal-gpu">📖 Informe Técnico GPU</button>
+                </div>
+                <div class="tarjeta">
+                    <img src="images/ssd.jpg" alt="SSD Kingston NV2">
+                    <h3>Almacenamiento</h3>
+                    <p>Tipo: SSD Kingston NV2 (M.2 NVMe)</p>
+                    <button class="boton-accion btn-abrir-informe" data-modal="modal-almacenamiento">📖 Informe Técnico Almacenamiento</button>
+                </div>
+                <div class="tarjeta">
+                    <img src="images/fuente.jpg" alt="Fuente EVGA 600W">
+                    <h3>Fuente de Alimentación (PSU)</h3>
+                    <p>EVGA 600 BR 600W, 80+ Bronze</p>
+                    <button class="boton-accion btn-abrir-informe" data-modal="modal-psu">📖 Informe Técnico PSU</button>
+                </div>
+                <div class="tarjeta">
+                    <img src="images/cooler.jpg" alt="Cooler AMD Wraith Stealth">
+                    <h3>Sistema de Refrigeración</h3>
+                    <p>Cooler stock AMD Wraith Stealth</p>
+                </div>
+                <div class="tarjeta">
+                    <img src="images/gabinete.jpg" alt="Gabinete Aerocool Bolt Mini">
+                    <h3>Gabinete (Chasis)</h3>
+                    <p>Aerocool Bolt Mini mATX</p>
+                    <button class="boton-accion btn-abrir-informe" data-modal="modal-gabinete">📖 Informe Técnico Gabinete</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN MEMORIA (TP MEMORIA Y ALMACENAMIENTO) -->
+        <section id="memoria">
+            <h2>Investigación: Memoria RAM y Almacenamiento</h2>
+            <p>Cómo la computadora maneja la información a corto y largo plazo.</p>
+            <div class="galeria-grid">
+                <div class="tarjeta tarjeta-investigacion">
+                    <div class="badge-investigacion">TP Investigación</div>
+                    <h3>🧠 Memoria RAM</h3>
+                    <p>Volatilidad, DDR4 vs DDR5, Dual Channel y latencias explicadas.</p>
+                    <button class="boton-accion btn-abrir-informe" data-modal="modal-ram">Leer Informe Completo</button>
+                </div>
+                <div class="tarjeta tarjeta-investigacion">
+                    <div class="badge-investigacion">TP Investigación</div>
+                    <h3>💾 Almacenamiento</h3>
+                    <p>HDD vs SSD SATA vs NVMe: velocidades, tecnologías y cuellos de botella.</p>
+                    <button class="boton-accion btn-abrir-informe" data-modal="modal-almacenamiento">Leer Informe Completo</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN GPU (TP TARJETA GRÁFICA) -->
+        <section id="gpu-section">
+            <h2>Investigación: Tarjeta Gráfica (GPU)</h2>
+            <p>La microcomputadora dedicada al procesamiento paralelo masivo.</p>
+            <div class="galeria-grid">
+                <div class="tarjeta tarjeta-investigacion">
+                    <div class="badge-investigacion">TP Investigación</div>
+                    <h3>🎮 GPU: Arquitectura y Tecnologías</h3>
+                    <p>Núcleos CUDA, VRAM, Ray Tracing, DLSS y por qué la GPU necesita su propia energía.</p>
+                    <button class="boton-accion btn-abrir-informe" data-modal="modal-gpu">Leer Informe Completo</button>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- SECCIÓN PSU Y GABINETE (TP PSU) -->
+        <section id="psu-section">
+            <h2>Investigación: Fuente de Alimentación y Gabinete</h2>
+            <p>El corazón energético y el pulmón del sistema.</p>
+            <div class="galeria-grid">
+                <div class="tarjeta tarjeta-investigacion">
+                    <div class="badge-investigacion">TP Investigación</div>
+                    <h3>⚡ Fuente de Alimentación (PSU)</h3>
+                    <p>Conversión AC/DC, certificación 80 Plus y protecciones eléctricas OVP/SCP.</p>
+                    <button class="boton-accion btn-abrir-informe" data-modal="modal-psu">Leer Informe Completo</button>
+                </div>
+                <div class="tarjeta tarjeta-investigacion">
+                    <div class="badge-investigacion">TP Investigación</div>
+                    <h3>🖥️ Gabinete y Airflow</h3>
+                    <p>Flujo de aire, presión positiva y por qué el gabinete no es solo una caja de chapa.</p>
+                    <button class="boton-accion btn-abrir-informe" data-modal="modal-gabinete">Leer Informe Completo</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PERIFÉRICOS -->
+        <section id="perifericos">
+            <h2>Periféricos y Dispositivos E/S</h2>
+            <p>Interfaces físicas de comunicación con el usuario.</p>
+            <div class="galeria-grid">
+                <div class="tarjeta">
+                    <img src="images/monitor.jpg" alt="Monitor">
+                    <h3>Monitor (Salida)</h3>
+                    <p>Resolución: 1920x1080 (Full HD) a 75Hz</p>
+                    <button class="boton-accion btn-abrir-informe" data-modal="modal-monitor">📖 Informe Técnico Monitor</button>
+                </div>
+                <div class="tarjeta">
+                    <img src="images/teclado.jpg" alt="Kit Teclado y Mouse">
+                    <img src="images/mouse.jpg" alt="Kit Teclado y Mouse">
+                    <h3>Teclado y Mouse (Entrada)</h3>
+                    <p>Conectividad: USB / Inalámbrico 2.4GHz</p>
+                    <button class="boton-accion btn-abrir-informe" data-modal="modal-teclado">📖 Informe Técnico Teclado/Mouse</button>
+                </div>
+                <div class="tarjeta">
+                    <img src="images/auriculares.jpg" alt="Auriculares Logitech">
+                    <h3>Auriculares (Salida/Entrada)</h3>
+                    <p>Modelo: Logitech Zone Vibe 125</p>
+                    <p>Conectividad: Receptor USB-A / Bluetooth</p>
+                    <button class="boton-accion btn-abrir-informe" data-modal="modal-audio">📖 Informe Técnico Audio y USB</button>
+                </div>
+            </div>
+
+            <div class="caja-destacada">
+                <h3>Investigación Completa: Periféricos e Interfaces</h3>
+                <p>Acceso al informe técnico sobre monitores, teclados, mouse, audio y estándares de conexión USB.</p>
+                <br>
+                <button class="boton-accion btn-abrir-informe" data-modal="modal-monitor" style="margin-right:10px;">📺 Monitores</button>
+                <button class="boton-accion btn-abrir-informe" data-modal="modal-teclado" style="margin-right:10px;">⌨️ Teclado y Mouse</button>
+                <button class="boton-accion btn-abrir-informe" data-modal="modal-audio">🔊 Audio y USB</button>
+            </div>
+        </section>
+
+        <!-- PRESUPUESTOS -->
+        <section id="presupuestos">
+            <h2>Simulación de Ensamblaje y Presupuestos</h2>
+            <p>Cotizaciones armadas en Compragamer para dos perfiles de uso distintos.</p>
+            <div class="galeria-grid">
+                <div class="tarjeta">
+                    <h3>Presupuesto Gama Baja</h3>
+                    <p>AMD Ryzen 5 5600GT, Mother B450M, SSD 512GB y Monitor 22" FHD. Equipo de entrada con buena relación precio-rendimiento.</p>
+                    <button class="boton-accion btn-abrir-informe" data-modal="modal-presupuesto-bajo">Ver Componentes y Cotización</button>
+                </div>
+                <div class="tarjeta">
+                    <h3>Presupuesto Gama Alta</h3>
+                    <p>AMD Ryzen 9 7900, RTX 5070 Ti 16GB, SSD NVMe 2TB y triple monitor QHD 180Hz. Equipo de máximo rendimiento.</p>
+                    <button class="boton-accion btn-abrir-informe" data-modal="modal-presupuesto-alto">Ver Componentes y Cotización</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- MANTENIMIENTO -->
+        <section id="mantenimiento">
+            <h2>Laboratorio: Diagnóstico y Mantenimiento</h2>
+            <p>Documentación técnica de los procedimientos realizados en el entorno de pruebas.</p>
+            <div class="galeria-grid">
+
+                <div class="tarjeta">
+                    <img src="images/soldadura.jpg" alt="Práctica de soldadura">
+                    <h3>Soldadura y Recuperación</h3>
+                    <p>Prácticas de desoldadura de componentes y reparación de pistas en placas base averiadas.</p>
+                </div>
+                <div class="tarjeta">
+                    <h3>Manual Técnico de Microsoldadura</h3>
+                    <p>Procedimientos detallados de microsoldadura sobre placa base: herramientas, técnicas y precauciones.</p>
+                    <a href="https://docs.google.com/document/d/1J8fGMrqFjXZB63HVscOxRHdq4_3i1Ppk/edit" target="_blank" class="boton-accion">Leer Manual de Microsoldadura</a>
+                </div>
+            </div>
+            <div class="caja-destacada">
+                <h3>Base de Datos de Conocimiento (Teoría)</h3>
+                <p>Acceso al informe técnico completo sobre funcionamiento interno, arquitectura de componentes y resolución de cuellos de botella.</p>
+                <br>
+                <!--<a href="LINK_AL_PDF_TEORICO" target="_blank" class="boton-accion" style="text-decoration: none;">Descargar/Ver PDF Teórico Completo</a>!-->
+            </div>
+        </section>
+
+        <!-- PRÁCTICAS EXTRA -->
+        <section id="practicas">
+            <h2>Prácticas de Laboratorio Extra</h2>
+            <div class="galeria-grid">
+                <div class="tarjeta">
+                    <img src="images/soldadura.jpg" alt="Práctica de soldadura">
+                    <h3>Soldadura y Desoldadura</h3>
+                    <p>Recuperación de componentes electrónicos y reparación de pistas en placas de descarte.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ARDUINO -->
+        <section id="arduino">
+            <h2>Proyectos Arduino e IoT</h2>
+            <p>Aplicación práctica de programación en C++ y electrónica para resolver problemas del mundo real.</p>
+            <div class="galeria-grid">
+                <div class="tarjeta">
+                    <img src="images/lentes_ciegos.jpg" alt="Lentes para ciegos con ESP32">
+                    <h3>Lentes Asistenciales</h3>
+                    <p>Hardware: Microcontrolador ESP32, Sensor Ultrasónico, Buzzer.</p>
+                    <p>Lógica: Detección de proximidad y emisión de alertas sonoras.</p>
+                    <!--<a href="LINK_AL_CODIGO_O_INFORME" target="_blank" class="boton-accion">Ver Código y Circuito</a>!-->
+                </div>
+                <div class="tarjeta">
+                    <img src="images/basurero.jpg" alt="Basurero automatizado con Arduino">
+                    <h3>Basurero Inteligente</h3>
+                    <p>Hardware: Placa Arduino, Servomotor, Sensor de Proximidad.</p>
+                    <p>Lógica: Apertura automática del contenedor mediante detección de movimiento.</p>
+                    <!--<a href="LINK_AL_CODIGO_O_INFORME" target="_blank" class="boton-accion">Ver Código y Circuito</a>!-->
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 — Proyecto de Laboratorio de Hardware | 5to Año</p>
+            <p>Desarrollado con HTML, CSS y JS puro.</p>
+        </footer>
+    </main>
+
+    <!-- MODAL: LAYOUT PLACA MADRE -->
+    <dialog id="modal-info">
+        <div class="modal-header"><h3>Layout de Placa Madre MSI B550M</h3></div>
+        <div class="modal-body">
+            <img src="images/manual_layout.png" alt="Esquema del manual MSI B550M" style="width: 100%; border-radius: 8px; margin-bottom: 15px;">
+            <p>El zócalo AM4 aloja el procesador AMD Ryzen 5 5600. Se observan las ranuras DIMM para los 16 GB de memoria RAM DDR4 instalados.</p>
+        </div>
+        <div class="modal-footer">
+            <button id="btn-cerrar" class="boton-accion btn-cerrar-modal">Cerrar</button>
+        </div>
+    </dialog>
+
+    <!-- MODAL: MEMORIA RAM -->
+    <dialog id="modal-ram">
+        <div class="modal-header">
+            <h3>🧠 Informe Técnico: Memoria RAM y Almacenamiento</h3>
+            <span class="modal-badge">TP Investigación</span>
+        </div>
+        <div class="modal-body">
+            <h4>PARTE 1: MEMORIA RAM (Acceso Aleatorio)</h4>
+            
+            <div class="informe-bloque">
+                <h5>Volatilidad y Función</h5>
+                <p>La RAM (Random Access Memory) es <strong>volátil</strong> porque necesita energía eléctrica constante para mantener la información. A diferencia del SSD o el HDD, los datos almacenados en la RAM se borran instantáneamente cuando se apaga la computadora.</p>
+                <p>Su función es actuar como <strong>escritorio de trabajo del procesador</strong>: cuando abrís un programa, el sistema operativo carga su código desde el disco (almacenamiento lento) hacia la RAM (almacenamiento rápido) para que el procesador pueda acceder a los datos en nanosegundos. Sin RAM suficiente, el sistema se ve obligado a usar el disco como "RAM de emergencia" (swap/paginación), lo que hace que todo vaya lentísimo.</p>
+            </div>
+
+            <div class="informe-bloque">
+                <h5>Tecnología DDR: Double Data Rate</h5>
+                <p>DDR significa <strong>"Double Data Rate"</strong> (Tasa de Transferencia Doble). La clave está en que transfiere datos en dos momentos del ciclo de reloj: al subir y al bajar la señal eléctrica. Esto duplica el ancho de banda sin necesitar aumentar la frecuencia física del módulo.</p>
+                <table class="tabla-informe">
+                    <thead><tr><th>Generación</th><th>Frecuencia típica</th><th>Voltaje</th><th>Ancho de banda</th></tr></thead>
+                    <tbody>
+                        <tr><td>DDR4</td><td>2400–3600 MHz</td><td>1.2V</td><td>~25 GB/s</td></tr>
+                        <tr><td>DDR5</td><td>4800–7200 MHz</td><td>1.1V</td><td>~51 GB/s</td></tr>
+                    </tbody>
+                </table>
+                <p>DDR5 duplica el ancho de banda y consume menos voltaje. Cada generación es <strong>físicamente incompatible</strong> con la anterior (distinto pin y posición del muesca de orientación).</p>
+                <p><strong>Frecuencia (MHz / MT/s):</strong> Indica cuántas operaciones por segundo puede realizar el módulo. A mayor frecuencia, mayor velocidad de transferencia. Se expresa en MT/s (Megatransferencias por segundo) o MHz coloquialmente.</p>
+                <p><strong>Latencia CL (CAS Latency):</strong> Mide el número de ciclos de reloj que tarda el módulo en responder a una solicitud del procesador. CL16 significa 16 ciclos de espera. Menor CL = más respuesta. Un módulo DDR4-3200 CL16 puede ser más rápido en la práctica que uno DDR4-3600 CL18.</p>
+            </div>
+
+            <div class="informe-bloque">
+                <h5>Dual Channel: Por qué 2×8GB > 1×16GB</h5>
+                <p>Cuando instalás dos módulos idénticos en los slots correctos de la placa madre, el controlador de memoria activa el modo <strong>Dual Channel</strong>. Esto crea dos canales de comunicación de 64 bits en paralelo, formando un bus efectivo de 128 bits.</p>
+                <p>El resultado: el ancho de banda disponible para el procesador se <strong>duplica</strong>. Un AMD Ryzen 5 5600 en Dual Channel puede acceder a la RAM con ~50 GB/s en lugar de ~25 GB/s en modo Single Channel.</p>
+                <p>En juegos y aplicaciones que demandan mucha memoria, la diferencia puede ser de hasta un <strong>20–30% de rendimiento</strong> simplemente por usar dos módulos en vez de uno.</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="boton-accion btn-cerrar-modal">Cerrar</button>
+        </div>
+    </dialog>
+
+    <!-- MODAL: ALMACENAMIENTO -->
+    <dialog id="modal-almacenamiento">
+        <div class="modal-header">
+            <h3>💾 Informe Técnico: Almacenamiento Persistente</h3>
+            <span class="modal-badge">TP Investigación</span>
+        </div>
+        <div class="modal-body">
+            <h4>PARTE 2: ALMACENAMIENTO (Memoria No Volátil)</h4>
+
+            <div class="informe-bloque">
+                <h5>HDD: Disco Rígido Mecánico</h5>
+                <p>El HDD (Hard Disk Drive) almacena datos en <strong>platos magnéticos giratorios</strong>. Un cabezal de lectura/escritura flota a nanómetros sobre la superficie del plato, magnetizando sectores para representar bits (0 y 1). La velocidad de rotación se mide en <strong>RPM</strong> (Revoluciones Por Minuto): los más comunes son 5400 RPM (laptops, economía) y 7200 RPM (escritorio, rendimiento).</p>
+                <p><strong>Vulnerabilidad:</strong> Al tener partes móviles, un golpe físico mientras el disco está girando puede hacer que el cabezal raye los platos, destruyendo los datos. Un corte de luz brusco durante una escritura puede dejar el sistema de archivos corrupto.</p>
+                <p>Velocidad típica de lectura: <strong>80–160 MB/s</strong>.</p>
+            </div>
+
+            <div class="informe-bloque">
+                <h5>SSD SATA y NVMe: Memoria Flash NAND</h5>
+                <p>Los SSD usan <strong>memoria Flash NAND</strong>, el mismo tipo de tecnología que los pendrives pero mucho más veloz y duradera. No tienen partes móviles: los datos se almacenan atrapando electrones en celdas de transistores de puerta flotante. Sin movimiento mecánico = sin desgaste por fricción = menor latencia.</p>
+                <p><strong>SSD SATA (formato 2.5"):</strong> Conecta por el mismo cable que un HDD antiguo (interfaz SATA). Velocidad: ~500–550 MB/s. Gran mejora sobre HDD pero limitado por el protocolo SATA.</p>
+                <p><strong>SSD M.2 NVMe:</strong> Se inserta directamente en la placa madre usando el protocolo NVMe y la interfaz PCIe. Al bypassear el controlador SATA, alcanza velocidades de lectura de <strong>3000–7000 MB/s</strong>.</p>
+                <table class="tabla-informe">
+                    <thead><tr><th>Tipo</th><th>Lectura típica</th><th>Latencia</th><th>Partes móviles</th></tr></thead>
+                    <tbody>
+                        <tr><td>HDD 7200 RPM</td><td>~150 MB/s</td><td>~10 ms</td><td>Sí</td></tr>
+                        <tr><td>SSD SATA</td><td>~550 MB/s</td><td>~0.1 ms</td><td>No</td></tr>
+                        <tr><td>SSD NVMe PCIe 4.0</td><td>~5000 MB/s</td><td>~0.05 ms</td><td>No</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="informe-bloque">
+                <h5>El Cuello de Botella: i9 + HDD</h5>
+                <p>Si instalamos Windows en un disco HDD antiguo y lo combinamos con un Intel Core i9, el procesador podría ejecutar instrucciones en nanosegundos, pero para iniciar el sistema operativo necesita cargar datos desde el disco. Con un HDD, esa carga tarda varios segundos por cada acceso (latencia de 10 ms vs. 0.05 ms del NVMe).</p>
+                <p>Resultado: el procesador más caro del mundo permanecería <strong>idle (ocioso)</strong> el 90% del tiempo esperando que el disco lento le entregue los datos. El HDD sería el cuello de botella completo del sistema, sin importar cuán potente sea el resto de los componentes.</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="boton-accion btn-cerrar-modal">Cerrar</button>
+        </div>
+    </dialog>
+
+    <!-- MODAL: GPU -->
+    <dialog id="modal-gpu">
+        <div class="modal-header">
+            <h3>🎮 Informe Técnico: Tarjeta Gráfica (GPU)</h3>
+            <span class="modal-badge">TP Investigación</span>
+        </div>
+        <div class="modal-body">
+            <h4>LA GPU: MICROCOMPUTADORA DE PROCESAMIENTO PARALELO</h4>
+
+            <div class="informe-bloque">
+                <h5>Arquitectura CPU vs GPU</h5>
+                <p>El <strong>CPU</strong> (Procesador Central) tiene entre 4 y 32 núcleos diseñados para ejecutar tareas secuenciales complejas con alta velocidad individual. Es como un equipo de 8 cirujanos expertos.</p>
+                <p>La <strong>GPU</strong> tiene miles de núcleos más pequeños y simples, diseñados para ejecutar muchas operaciones idénticas en paralelo simultáneamente. La RTX 4060 tiene <strong>3072 núcleos CUDA</strong> (NVIDIA) capaces de procesar miles de píxeles al mismo tiempo. Es como tener 3072 obreros haciendo trabajos simples en paralelo.</p>
+                <p>Los <strong>núcleos CUDA</strong> (Compute Unified Device Architecture) de NVIDIA son unidades de procesamiento paralelo programables. AMD los llama <strong>Stream Processors</strong>. Ambos son esencialmente ALUs (Unidades Aritmético-Lógicas) optimizadas para operaciones en punto flotante.</p>
+            </div>
+
+            <div class="informe-bloque">
+                <h5>VRAM: La RAM Propia de la GPU</h5>
+                <p>La VRAM (Video RAM) es la memoria exclusiva de la tarjeta gráfica. La RTX 4060 incluye <strong>8 GB de GDDR6</strong> soldados directamente en la PCB de la tarjeta.</p>
+                <p><strong>¿Por qué no usa la RAM del sistema?</strong> La GPU necesita procesar texturas, geometría 3D y framebuffers en cantidades masivas y con latencias extremadamente bajas. La RAM del sistema conecta por PCIe (ancho de banda ~32 GB/s), mientras que la VRAM GDDR6 tiene un bus dedicado de hasta <strong>288 GB/s</strong>. Usar la RAM del sistema introduciría un cuello de botella catastrófico para el renderizado.</p>
+            </div>
+
+            <div class="informe-bloque">
+                <h5>Consumo y Refrigeración</h5>
+                <p>Las GPUs modernas pueden consumir entre 115W (RTX 4060) y 450W (RTX 4090). Este consumo proviene directamente de la fuente mediante <strong>conectores PCIe de 8 pines</strong> (o el nuevo conector 16-pin 12VHPWR).</p>
+                <p>Los grandes disipadores con 2–3 ventiladores son necesarios porque concentrar cientos de vatios en un chip de pocos centímetros cuadrados genera temperaturas que pueden superar los 80°C. Los ventiladores, heatpipes y el disipador de aluminio/cobre trabajan en conjunto para mantener el chip por debajo del thermal throttling (reducción automática de rendimiento por sobrecalentamiento).</p>
+            </div>
+
+            <div class="informe-bloque">
+                <h5>Tecnologías Modernas</h5>
+                <p><strong>Ray Tracing (Trazado de Rayos):</strong> Técnica de renderizado que simula el comportamiento físico real de la luz. En lugar de "trucos" tradicionales (mapas de luz estáticos), calcula el recorrido de millones de rayos de luz desde la cámara virtual, rebotando en superficies y generando reflejos, sombras y refracciones matemáticamente correctas. Es computacionalmente muy costoso, por eso las RTX tienen núcleos RT dedicados.</p>
+                <p><strong>DLSS (Deep Learning Super Sampling) de NVIDIA:</strong> Usa inteligencia artificial para renderizar el juego a una resolución menor (ej. 1080p) y escalarlo inteligentemente a 4K, con calidad visual casi indistinguible del 4K nativo pero con mucho mayor rendimiento. AMD tiene su equivalente llamado <strong>FSR (FidelityFX Super Resolution)</strong>, que funciona en cualquier GPU.</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="boton-accion btn-cerrar-modal">Cerrar</button>
+        </div>
+    </dialog>
+
+    <!-- MODAL: PSU -->
+    <dialog id="modal-psu">
+        <div class="modal-header">
+            <h3>⚡ Informe Técnico: Fuente de Alimentación (PSU)</h3>
+            <span class="modal-badge">TP Investigación</span>
+        </div>
+        <div class="modal-body">
+            <h4>PARTE 1: FUENTE DE ALIMENTACIÓN</h4>
+
+            <div class="informe-bloque">
+                <h5>Conversión de Energía: AC a DC</h5>
+                <p>La fuente de alimentación (PSU - Power Supply Unit) tiene una función técnica fundamental: <strong>convertir la corriente alterna (AC)</strong> que viene del tomacorriente de la pared (220V en Argentina) en <strong>corriente continua (DC)</strong> a los voltajes que necesitan los componentes internos.</p>
+                <p>Los componentes electrónicos requieren voltajes precisos: <strong>+12V</strong> para CPU, GPU y motores; <strong>+5V</strong> para USB y lógica; <strong>+3.3V</strong> para la RAM y algunas lógicas de la placa madre. La fuente rectifica, filtra y estabiliza estos voltajes constantemente.</p>
+            </div>
+
+            <div class="informe-bloque">
+                <h5>Certificación 80 Plus: ¿Qué garantiza realmente?</h5>
+                <p>La certificación 80 Plus mide únicamente la <strong>eficiencia energética</strong> de la fuente: qué porcentaje de la energía tomada del enchufe llega realmente a los componentes (el resto se pierde como calor).</p>
+                <table class="tabla-informe">
+                    <thead><tr><th>Certificación</th><th>Eficiencia mínima al 50% carga</th></tr></thead>
+                    <tbody>
+                        <tr><td>80 Plus Bronze</td><td>85%</td></tr>
+                        <tr><td>80 Plus Gold</td><td>90%</td></tr>
+                        <tr><td>80 Plus Platinum</td><td>92%</td></tr>
+                    </tbody>
+                </table>
+                <p><strong>El mito desmitificado:</strong> Una fuente 80 Plus Gold NO garantiza que tenga buenos condensadores, buena regulación de voltaje ni protecciones eléctricas completas. Solo certifica eficiencia. Una fuente genérica barata podría teóricamente obtener el bronce midiendo solo en condiciones ideales de laboratorio. Siempre hay que revisar el fabricante (Seasonic, EVGA, Corsair son referentes) y los reviews técnicos de canales especializados.</p>
+            </div>
+
+            <div class="informe-bloque">
+                <h5>Protecciones Eléctricas (El punto más crítico)</h5>
+                <p><strong>OVP (Over Voltage Protection - Protección contra Sobretensión):</strong> Si el voltaje en cualquier línea (+12V, +5V, +3.3V) supera un umbral seguro (ej. +13.5V en la línea de 12V), la fuente se apaga automáticamente antes de que ese exceso de voltaje queme los componentes conectados.</p>
+                <p><strong>SCP (Short Circuit Protection - Protección contra Cortocircuito):</strong> Si hay un cortocircuito en cualquier parte del sistema (cables pelados, componente dañado), la fuente detecta la corriente anómala y corta la energía en milisegundos.</p>
+                <p><strong>¿Qué pasa sin estas protecciones?</strong> Si ocurre un pico de tensión en la red eléctrica domiciliaria (algo frecuente en Argentina) y la fuente no tiene OVP, ese pico se transmite directamente al procesador, la placa madre, la RAM y el SSD. El resultado: componentes quemados que pueden costar cientos de dólares. Una fuente genérica de $10.000 puede destruir hardware de $500.000.</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="boton-accion btn-cerrar-modal">Cerrar</button>
+        </div>
+    </dialog>
+
+    <!-- MODAL: GABINETE -->
+    <dialog id="modal-gabinete">
+        <div class="modal-header">
+            <h3>🖥️ Informe Técnico: Gabinete y Flujo de Aire</h3>
+            <span class="modal-badge">TP Investigación</span>
+        </div>
+        <div class="modal-body">
+            <h4>PARTE 2: GABINETE Y AIRFLOW</h4>
+
+            <div class="informe-bloque">
+                <h5>Funcionalidad Real del Gabinete</h5>
+                <p>El gabinete no es "solo una caja de chapa". Sus funciones reales son:</p>
+                <ul class="lista-informe">
+                    <li><strong>Soporte estructural:</strong> Sostiene mecánicamente todos los componentes (placa madre, fuente, discos) con el torque y alineación correctos.</li>
+                    <li><strong>Protección electromagnética:</strong> El metal actúa como jaula de Faraday, reduciendo interferencias electromagnéticas (EMI) que afectan la estabilidad del sistema.</li>
+                    <li><strong>Gestión térmica:</strong> Define los canales de flujo de aire que mantienen frescos todos los componentes.</li>
+                    <li><strong>Enrutamiento de cables (Cable Management):</strong> Permite organizar los cables detrás del panel trasero para no obstruir el flujo de aire interno.</li>
+                    <li><strong>Protección física:</strong> Protege los componentes de polvo, humedad accidental y daños físicos.</li>
+                </ul>
+            </div>
+
+            <div class="informe-bloque">
+                <h5>Dinámica de Fluidos: Airflow Correcto</h5>
+                <p>El principio básico es simple: el <strong>aire frío entra por el frente e inferior</strong>, absorbe el calor de los componentes, y el <strong>aire caliente sale por la parte trasera y superior</strong>. El calor naturalmente sube (convección), por lo que los ventiladores traseros y superiores tienen ventaja física.</p>
+                <p><strong>Configuración recomendada para el Aerocool Bolt Mini:</strong></p>
+                <ul class="lista-informe">
+                    <li>Frente: ventiladores de <em>intake</em> (ingesta de aire frío)</li>
+                    <li>Trasero: ventilador de <em>exhaust</em> (expulsión de aire caliente)</li>
+                    <li>Superior: ventiladores de exhaust (el calor sube naturalmente)</li>
+                </ul>
+                <p><strong>Presión Positiva de Aire:</strong> Se logra cuando hay más ventiladores de intake que de exhaust. Esto crea una presión interna ligeramente mayor que el exterior. El beneficio: el aire entra solo por las entradas diseñadas (con filtros de polvo), en lugar de entrar por todas las rendijas sin filtrar. Resultado: menos polvo acumulado en el interior, menores temperaturas a largo plazo y mayor vida útil de los componentes.</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="boton-accion btn-cerrar-modal">Cerrar</button>
+        </div>
+    </dialog>
+
+    <!-- MODAL: MONITOR -->
+    <dialog id="modal-monitor">
+        <div class="modal-header">
+            <h3>📺 Informe Técnico: Monitores</h3>
+            <span class="modal-badge">TP Periféricos</span>
+        </div>
+        <div class="modal-body">
+            <h4>PARTE 1: EL MONITOR — DISPOSITIVO DE SALIDA VISUAL</h4>
+
+            <div class="informe-bloque">
+                <h5>Resolución y Relación de Aspecto</h5>
+                <p>La resolución define cuántos píxeles (puntos de color) componen la imagen de la pantalla.</p>
+                <table class="tabla-informe">
+                    <thead><tr><th>Nombre</th><th>Resolución</th><th>Píxeles totales</th></tr></thead>
+                    <tbody>
+                        <tr><td>Full HD (1080p)</td><td>1920 × 1080</td><td>~2 millones</td></tr>
+                        <tr><td>2K / QHD (1440p)</td><td>2560 × 1440</td><td>~3.7 millones</td></tr>
+                        <tr><td>4K / UHD (2160p)</td><td>3840 × 2160</td><td>~8.3 millones</td></tr>
+                    </tbody>
+                </table>
+                <p>La relación de aspecto 16:9 es el estándar. El "p" hace referencia al número de líneas horizontales en escaneo progresivo. Mayor resolución = imagen más nítida, pero mayor demanda a la GPU.</p>
+            </div>
+
+            <div class="informe-bloque">
+                <h5>Tasa de Refresco (Hz) y Tiempo de Respuesta</h5>
+                <p>Los <strong>Hercios (Hz)</strong> indican cuántas veces por segundo el monitor actualiza la imagen. Un monitor de 60Hz muestra 60 fotogramas distintos por segundo; uno de 144Hz muestra 144. Para los gamers, mayor frecuencia de actualización significa movimiento más fluido y menos motion blur, lo que se traduce en ventaja competitiva real (reaccionar antes a movimientos del enemigo).</p>
+                <p>El <strong>tiempo de respuesta (ms)</strong> mide cuánto tarda un píxel en cambiar de un color a otro. Un tiempo alto (10ms) genera ghosting (estela borrosa en objetos en movimiento). Para gaming competitivo se busca 1ms o menos.</p>
+            </div>
+
+            <div class="informe-bloque">
+                <h5>Tipos de Panel</h5>
+                <table class="tabla-informe">
+                    <thead><tr><th>Panel</th><th>Ventaja</th><th>Desventaja</th><th>Ideal para</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>TN</strong></td><td>1ms, muy rápido</td><td>Colores pobres, ángulos malos</td><td>Gaming competitivo</td></tr>
+                        <tr><td><strong>IPS</strong></td><td>Colores vivos, 178° de ángulo</td><td>Mayor tiempo de respuesta</td><td>Diseño, trabajo color</td></tr>
+                        <tr><td><strong>VA</strong></td><td>Contraste excelente (3000:1)</td><td>Ghosting en oscuro</td><td>Cine, contenido oscuro</td></tr>
+                    </tbody>
+                </table>
+                <p>El monitor del equipo (Full HD 75Hz) usa probablemente un panel IPS o VA, equilibrando calidad visual con precio razonable.</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="boton-accion btn-cerrar-modal">Cerrar</button>
+        </div>
+    </dialog>
+
+    <!-- MODAL: TECLADO Y MOUSE -->
+    <dialog id="modal-teclado">
+        <div class="modal-header">
+            <h3>⌨️ Informe Técnico: Teclado y Mouse</h3>
+            <span class="modal-badge">TP Periféricos</span>
+        </div>
+        <div class="modal-body">
+            <h4>PARTE 2: TECLADO Y MOUSE</h4>
+
+            <div class="informe-bloque">
+                <h5>Teclados: Membrana vs Mecánico</h5>
+                <p>Un <strong>teclado de membrana</strong> usa tres capas de plástico flexible: al presionar una tecla, la capa superior se dobla y toca la inferior, completando un circuito. Son silenciosos y económicos, pero con vida útil de ~5 millones de pulsaciones y feedback táctil impreciso.</p>
+                <p>Un <strong>teclado mecánico</strong> tiene un interruptor (switch) físico individual debajo de cada tecla. Vida útil típica: 50–100 millones de pulsaciones. El feedback es mucho más preciso y consistente.</p>
+                <p>Los <strong>switches</strong> se identifican por colores (estándar Cherry MX):</p>
+                <ul class="lista-informe">
+                    <li><strong>Cherry MX Blue:</strong> Click audible + táctil. Ruidoso pero satisfactorio. Para typistas.</li>
+                    <li><strong>Cherry MX Red:</strong> Lineal, silencioso, muy suave. Preferido por gamers.</li>
+                    <li><strong>Cherry MX Brown:</strong> Táctil sin click audible. Equilibrio entre escritura y gaming.</li>
+                </ul>
+            </div>
+
+            <div class="informe-bloque">
+                <h5>Mouse: DPI y Polling Rate</h5>
+                <p>El <strong>DPI (Dots Per Inch — Puntos Por Pulgada)</strong> mide la sensibilidad del sensor óptico. Un mouse a 800 DPI mueve el cursor 800 píxeles por cada pulgada física recorrida. Mayor DPI = mayor velocidad pero menor precisión. Los gamers competitivos de precisión (francotiradores) prefieren 400–800 DPI con velocidad de refresco alta.</p>
+                <p>El <strong>Polling Rate (Tasa de Sondeo)</strong> indica cuántas veces por segundo el mouse reporta su posición al sistema operativo. A 125 Hz reporta cada 8ms; a 1000 Hz reporta cada 1ms. Un Polling Rate alto reduce la latencia de movimiento perceptiblemente en situaciones de alta precisión. Los mice gaming modernos llegan a 4000 Hz o 8000 Hz.</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="boton-accion btn-cerrar-modal">Cerrar</button>
+        </div>
+    </dialog>
+
+    <!-- MODAL: AUDIO Y USB -->
+    <dialog id="modal-audio">
+        <div class="modal-header">
+            <h3>🔊 Informe Técnico: Audio e Interfaces USB</h3>
+            <span class="modal-badge">TP Periféricos</span>
+        </div>
+        <div class="modal-body">
+            <h4>PARTE 3: AUDIO E INTERFACES DE CONEXIÓN</h4>
+
+            <div class="informe-bloque">
+                <h5>Jack 3.5mm (Analógico) vs USB (Digital)</h5>
+                <p>Cuando conectás auriculares por <strong>Jack 3.5mm</strong>, la señal viaja como corriente eléctrica analógica desde el DAC (Conversor Digital-Analógico) integrado en la placa madre hasta el auricular. La calidad del sonido depende completamente de la calidad del DAC/amplificador de la placa madre, que suele ser de calidad mediocre.</p>
+                <p>Cuando conectás auriculares por <strong>USB</strong>, los datos de audio viajan como señal digital hasta el auricular (o su base), que contiene su propio <strong>DAC y amplificador integrado</strong>. Esto bypassa completamente el DAC de la placa madre.</p>
+                <p>El <strong>DAC (Digital-to-Analog Converter)</strong> es el chip que convierte los datos digitales de audio (bits: 0 y 1) en variaciones de voltaje analógicas que mueven el cono del auricular. La calidad del DAC determina la fidelidad sonora: resolución en frecuencias, ruido de fondo (SNR), y distorsión armónica.</p>
+                <p>Los auriculares Logitech Zone Vibe 125 (USB-A) traen su propio DAC integrado, independizándose de la calidad de la placa madre.</p>
+            </div>
+
+            <div class="informe-bloque">
+                <h5>USB Tipo-A vs USB Tipo-C</h5>
+                <table class="tabla-informe">
+                    <thead><tr><th>Característica</th><th>USB Tipo-A</th><th>USB Tipo-C</th></tr></thead>
+                    <tbody>
+                        <tr><td>Forma</td><td>Rectangular, 4 pines</td><td>Oval, 24 pines</td></tr>
+                        <tr><td>Reversible</td><td>No (solo entra de un lado)</td><td>Sí (funciona en ambas orientaciones)</td></tr>
+                        <tr><td>Velocidad máxima</td><td>USB 3.2: 10 Gbps</td><td>USB4 / TB4: 40–80 Gbps</td></tr>
+                        <tr><td>Carga</td><td>Máx. 5W (USB 2.0)</td><td>Hasta 240W (USB PD)</td></tr>
+                        <tr><td>Usos</td><td>Pendrives, ratones, teclados</td><td>Smartphones, laptops, SSD externos</td></tr>
+                    </tbody>
+                </table>
+                <p>El conector Tipo-C fue diseñado para ser universal: un solo cable puede transferir datos, video (DisplayPort/HDMI alt mode) y electricidad simultáneamente. Está reemplazando progresivamente al Tipo-A en dispositivos modernos.</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="boton-accion btn-cerrar-modal">Cerrar</button>
+        </div>
+    </dialog>
+
+    <!-- MODAL: PRESUPUESTO GAMA BAJA -->
+    <dialog id="modal-presupuesto-bajo">
+        <div class="modal-header">
+            <h3>💻 Presupuesto: PC Gama Baja</h3>
+            <span class="modal-badge">Cotización</span>
+        </div>
+        <div class="modal-body">
+            <h4>COMPONENTES DE LA PC</h4>
+
+            <div class="informe-bloque">
+                <h5>Listado de Componentes</h5>
+                <ul class="lista-informe">
+                    <li>1 X Procesador AMD Ryzen 5 5600GT 4.6GHz Turbo AM4 + Wraith Stealth Cooler</li>
+                    <li>1 X Mother Asrock B450M-HDV 4.0 AM4 HDMI M.2</li>
+                    <li>1 X Usar Cooler CPU incluido en el procesador AMD</li>
+                    <li>1 X Memoria Crucial DDR4 8GB 2666MHz CL19</li>
+                    <li>1 X Disco Solido SSD ADATA 512GB SU650SS 520MB/s</li>
+                    <li>1 X Fuente Magnum Tech 600W Cooler 120mm MT-PSU600</li>
+                    <li>1 X Gabinete Magnum Tech 436B 1x120mm FRGB Fan Vidrio Templado</li>
+                    <li>1 X Monitor Gamer ASUS VY229HF-J 22" FHD IPS 100Hz</li>
+                    <li>1 X Auriculares Redragon H120 Ares RGB PC</li>
+                    <li>1 X Mouse Pad Redragon Kunlun Large P006 XL 880x420mm</li>
+                    <li>1 X Mouse Logitech Wireless M190 Charcoal</li>
+                    <li>1 X Teclado Logitech K120 Negro USB</li>
+                    <li>1 X ARMADO BASICO DE PC (No incluye instalación de sistema operativo)</li>
+                </ul>
+            </div>
+
+            <div class="informe-bloque">
+                <h5>Total de la Cotización</h5>
+                <table class="tabla-informe">
+                    <thead><tr><th>Concepto</th><th>Importe</th></tr></thead>
+                    <tbody>
+                        <tr><td>Total</td><td>$ 874.172</td></tr>
+                    </tbody>
+                </table>
+                <p><a href="https://compragamer.com/armatupc?tipo=26&cpu=15739&paso=11&mother=8273&ccpu=2094&mem=19526&hd=17143&fuente=20302&gab=14357&monitores=16497&perifericos=16727,7344,11973,3512" target="_blank" class="boton-accion">🛒 Ver Cotización en Compragamer</a></p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="boton-accion btn-cerrar-modal">Cerrar</button>
+        </div>
+    </dialog>
+
+    <!-- MODAL: PRESUPUESTO GAMA ALTA -->
+    <dialog id="modal-presupuesto-alto">
+        <div class="modal-header">
+            <h3>💻 Presupuesto: PC Gama Alta</h3>
+            <span class="modal-badge">Cotización</span>
+        </div>
+        <div class="modal-body">
+            <h4>COMPONENTES DE LA PC</h4>
+
+            <div class="informe-bloque">
+                <h5>Listado de Componentes</h5>
+                <ul class="lista-informe">
+                    <li>1 X Procesador AMD Ryzen 9 7900 5.4GHz Turbo AM5 - Sin Cooler</li>
+                    <li>1 X Mother Asrock A620M-C R2.0 WIFI BULK AM5 DDR5</li>
+                    <li>1 X Cooler CPU ID-Cooling FROZN A410 ARGB</li>
+                    <li>2 X Memoria Adata DDR5 16GB 5600MHz XPG Lancer Blade Black CL46 Intel XMP 3.0 / AMD EXPO</li>
+                    <li>1 X Placa de Video MSI GeForce RTX 5070 Ti 16GB GDDR7 SHADOW 3X OC</li>
+                    <li>1 X Disco Solido SSD M.2 Samsung 2TB 990 EVO 5000MB/s NVMe PCI-E Gen4 x4 Gen5 x2</li>
+                    <li>1 X Fuente Antec 750W 80 Plus Gold Full Modular ATX 3.1 PCIe 5.1 GSK750 AR</li>
+                    <li>1 X Gabinete HYTE Y70 TOUCH INFINITE Panda Vidrio Templado Pantalla Tactil 2.5K LCD IPS 60Hz Inc. Cable Riser PCIe 4x16 USB-C 3.2</li>
+                    <li>3 X Monitor Gamer AsRock Phantom PG27QFT2A 27" QHD IPS 1440p 180Hz FreeSync Antena WiFi Integrada Base Regulable</li>
+                    <li>1 X Auriculares JBL QUANTUM TWS Wireless Bluetooth 2.4GHz 5.2 ANC Black 16Hs</li>
+                    <li>5 X Cooler Fan ID-Cooling AF-127-ARGB-K Black</li>
+                    <li>1 X Mouse Pad SteelSeries QcK Prism XL RGB 900x300mm</li>
+                    <li>1 X Mouse HyperX Pulsefire Fuse Wireless 2.4Ghz Bluetooth RGB 75gr 85Hs</li>
+                    <li>1 X Teclado Mecanico HyperX Alloy Origins 60% Switch Linear RED RGB ENG</li>
+                    <li>1 X ARMADO DE PC (No incluye instalación de sistema operativo)</li>
+                    <li>1 X Service Instalación Cooler CPU en equipos armados</li>
+                </ul>
+            </div>
+
+            <div class="informe-bloque">
+                <h5>Total de la Cotización</h5>
+                <table class="tabla-informe">
+                    <thead><tr><th>Concepto</th><th>Importe</th></tr></thead>
+                    <tbody>
+                        <tr><td>Total</td><td>$ 6.355.899</td></tr>
+                    </tbody>
+                </table>
+                <p><a href="https://compragamer.com/armatupc?tipo=26&cpu=18579&paso=11&mother=18913&ccpu=15577&mem=17147,17147&video=17586&hd=19533&fuente=18471&gab=17893&monitores=16400,16400,16400&perifericos=16175,19094,19094,19094,19094,19094,18323,19500,12665" target="_blank" class="boton-accion">🛒 Ver Cotización en Compragamer</a></p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="boton-accion btn-cerrar-modal">Cerrar</button>
+        </div>
+    </dialog>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>
