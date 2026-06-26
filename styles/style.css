@@ -15,7 +15,7 @@
     --cyan-glow:  rgba(0, 229, 255, 0.35);
     --amber:      #FFB800;
     --amber-dim:  rgba(255, 184, 0, 0.15);
-    --white:      #F0EDE8;
+    --white:      #ffffff;
     --slate:      #8892A4;
     --border:     rgba(0, 229, 255, 0.18);
     --danger:     #FF4B6E;
@@ -147,7 +147,7 @@ nav a {
     transition: color var(--transition), border-color var(--transition), background var(--transition);
     clip-path: var(--clip-corner);
     display: block;
-}
+} 
 
 nav a:hover {
     color: var(--cyan);
