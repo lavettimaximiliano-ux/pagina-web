@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8fafc;
+    color: #334155;
+    margin: 0;
+}
+
+/* NAV */
+nav {
+    background-color: #1e293b;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+/* MAIN */
+main {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+section {
+    padding-top: 80px;
+    margin-bottom: 60px;
+}
+
+/* GRID */
+.galeria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.tarjeta {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* BOTONES */
+.boton-accion {
+    background: blue;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* MODAL */
+dialog {
+    padding: 20px;
+}
+
+/* MODO OSCURO */
+body.modo-oscuro {
+    background: #0f172a;
+    color: white;
+}
+
+/* BOTÓN TEMA */
+.interruptor-tema {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-size: 25px;
+    background: none;
+    border: none;
+}
+
+/* CURSOR */
+#cursor-follower {
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    background: rgba(0,0,255,0.4);
+    border-radius: 50%;
+    pointer-events: none;
+}
