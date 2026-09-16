@@ -134,6 +134,7 @@ nav ul {
     display: flex;
     gap: 4px;
     flex-wrap: wrap;
+    padding-left: 5px;
 }
 
 nav a {
@@ -818,6 +819,100 @@ body.modo-claro .informe-bloque { background: rgba(255,255,255,0.4); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--cyan); }
 
+/* === PROYECTO FINAL: TARJETA DESTACADA === */
+.tarjeta-final {
+    border-color: rgba(255, 184, 0, 0.35);
+    background: linear-gradient(135deg, #1A1405 0%, var(--bg-card) 100%);
+}
+
+.tarjeta-final .badge-investigacion { background: var(--amber); }
+
+.tarjeta-final::before {
+    background: linear-gradient(90deg, var(--amber), transparent);
+}
+
+.tarjeta-final:hover {
+    border-color: rgba(255, 184, 0, 0.6);
+    box-shadow: 0 8px 40px rgba(255, 184, 0, 0.08), 0 0 0 1px rgba(255, 184, 0, 0.1);
+}
+
+/* === MEDIA DENTRO DE INFORMES === */
+.media-informe {
+    width: 100%;
+    border: 1px solid var(--border);
+    margin: 12px 0;
+    display: block;
+}
+
+/* Contenedor responsivo 16:9 para video o iframe */
+.video-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    margin: 12px 0;
+    border: 1px solid var(--border);
+    background: #000;
+    overflow: hidden;
+}
+
+.video-wrap iframe,
+.video-wrap video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* Placeholder para foto o video pendiente */
+.placeholder-media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 180px;
+    margin: 12px 0;
+    border: 1px dashed var(--border);
+    background: rgba(0, 229, 255, 0.03);
+    text-align: center;
+    padding: 20px;
+}
+
+.placeholder-media span { font-size: 1.8rem; opacity: 0.6; }
+
+.placeholder-media p {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--slate);
+    margin: 0;
+}
+
+/* === BLOQUE DE CÓDIGO === */
+.bloque-codigo {
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--amber);
+    padding: 16px 18px;
+    margin: 12px 0;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    line-height: 1.6;
+    color: var(--white);
+    scrollbar-width: thin;
+}
+
+.bloque-codigo code {
+    font-family: inherit;
+    white-space: pre;
+}
+
+body.modo-claro .bloque-codigo { background: rgba(255, 255, 255, 0.6); }
+body.modo-claro .tarjeta-final  { background: var(--bg-card); }
+
 /* === RESPONSIVE === */
 @media (max-width: 700px) {
     .nav-inner { height: auto; padding: 10px 0; flex-direction: column; gap: 8px; }
@@ -836,4 +931,9 @@ body.modo-claro .informe-bloque { background: rgba(255,255,255,0.4); }
 
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+@media (max-width: 700px) {
+    .bloque-codigo { font-size: 0.68rem; padding: 12px 14px; }
+    .placeholder-media { min-height: 140px; }
 }
