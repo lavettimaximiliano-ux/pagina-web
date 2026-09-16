@@ -10,30 +10,36 @@ let mx = -100, my = -100, fx = -100, fy = -100;
 
 document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
-    dot.style.left = mx + 'px';
-    dot.style.top  = my + 'px';
+    if (dot) {
+        dot.style.left = mx + 'px';
+        dot.style.top  = my + 'px';
+    }
 });
 
 (function animateCursor() {
-    fx += (mx - fx) * 0.14;
-    fy += (my - fy) * 0.14;
-    follower.style.left = fx + 'px';
-    follower.style.top  = fy + 'px';
+    if (follower) {
+        fx += (mx - fx) * 0.14;
+        fy += (my - fy) * 0.14;
+        follower.style.left = fx + 'px';
+        follower.style.top  = fy + 'px';
+    }
     requestAnimationFrame(animateCursor);
 })();
 
-document.querySelectorAll('a, button, .tarjeta').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        follower.style.width  = '36px';
-        follower.style.height = '36px';
-        follower.style.borderColor = 'var(--amber)';
+if (follower) {
+    document.querySelectorAll('a, button, .tarjeta').forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            follower.style.width  = '36px';
+            follower.style.height = '36px';
+            follower.style.borderColor = 'var(--amber)';
+        });
+        el.addEventListener('mouseleave', () => {
+            follower.style.width  = '20px';
+            follower.style.height = '20px';
+            follower.style.borderColor = 'var(--cyan)';
+        });
     });
-    el.addEventListener('mouseleave', () => {
-        follower.style.width  = '20px';
-        follower.style.height = '20px';
-        follower.style.borderColor = 'var(--cyan)';
-    });
-});
+}
 
 /* === HERO PARTICLE CANVAS === */
 const canvas = document.getElementById('hero-canvas');
@@ -108,6 +114,7 @@ const terminalLines = [
     { prefix: '',   text: '[OK] GPU: NVIDIA RTX 4060 — 8GB GDDR6', cls: 'ok', delay: 20 },
     { prefix: '',   text: '[OK] RAM: 16GB DDR4 Dual Channel', cls: 'ok', delay: 20 },
     { prefix: '',   text: '[OK] SSD: Kingston NV2 M.2 NVMe', cls: 'ok', delay: 20 },
+    { prefix: '',   text: '[OK] Proyecto Final: ESP32 Water Detector', cls: 'ok', delay: 20 },
     { prefix: '$ ', text: 'ready_', cls: 'cmd', delay: 60 },
 ];
 
@@ -144,20 +151,6 @@ if (terminalEl) {
     setTimeout(typeLine, 600);
 }
 
-/* === 3D TILT CARDS === */
-document.querySelectorAll('.tarjeta').forEach(card => {
-    card.addEventListener('mousemove', e => {
-        const rect = card.getBoundingClientRect();
-        const cx = rect.left + rect.width  / 2;
-        const cy = rect.top  + rect.height / 2;
-        const dx = (e.clientX - cx) / (rect.width  / 2);
-        const dy = (e.clientY - cy) / (rect.height / 2);
-        card.style.transform = `perspective(600px) rotateX(${-dy * 6}deg) rotateY(${dx * 6}deg) translateZ(4px)`;
-    });
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(600px) rotateX(0) rotateY(0) translateZ(0)';
-    });
-});
 
 /* === SCROLL REVEAL === */
 const revealEls = document.querySelectorAll('.tarjeta, .informe-bloque, .caja-destacada, .section-divider');
@@ -209,6 +202,7 @@ document.querySelectorAll('dialog').forEach(dialog => {
 /* === THEME TOGGLE === */
 const botonTema = document.getElementById('btn-tema');
 if (botonTema) {
+    botonTema.textContent = '☀';
     botonTema.addEventListener('click', () => {
         document.body.classList.toggle('modo-claro');
         botonTema.textContent = document.body.classList.contains('modo-claro') ? '☾' : '☀';
